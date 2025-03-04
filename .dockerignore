@@ -1,0 +1,10 @@
+.dockerignore
+.git
+.gitattributes
+.gitignore
+.pixi/
+.pixi/.gitignore
+Dockerfile
+README.md
+data
+docker-compose.yaml

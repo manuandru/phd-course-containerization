@@ -1,0 +1,70 @@
+services:
+    30min-1-full: &base
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment: &env_base
+            AGGREGATION_INTERVAL: 30min
+            AHEAD: 1
+            AGGREGATION_METHOD: FULL_SERVICE
+            DATASET_PATH: /data/dataset.csv
+            OUTPUT_PATH: /output
+        volumes:
+            - ./data:/data
+            - ./output:/output
+
+    30min-1-single:
+        <<: *base
+        environment:
+            <<: *env_base
+            AGGREGATION_INTERVAL: 30min
+            AHEAD: 1
+            AGGREGATION_METHOD: SINGLE_BUS
+
+    30min-2-full:
+        <<: *base
+        environment:
+            <<: *env_base
+            AGGREGATION_INTERVAL: 30min
+            AHEAD: 2
+            AGGREGATION_METHOD: FULL_SERVICE
+
+    30min-2-single:
+        <<: *base
+        environment:
+            <<: *env_base
+            AGGREGATION_INTERVAL: 30min
+            AHEAD: 2
+            AGGREGATION_METHOD: SINGLE_BUS
+
+    60min-1-full:
+        <<: *base
+        environment:
+            <<: *env_base
+            AGGREGATION_INTERVAL: 60min
+            AHEAD: 1
+            AGGREGATION_METHOD: FULL_SERVICE
+
+    60min-1-single:
+        <<: *base
+        environment:
+            <<: *env_base
+            AGGREGATION_INTERVAL: 60min
+            AHEAD: 1
+            AGGREGATION_METHOD: SINGLE_BUS
+
+    60min-2-full:
+        <<: *base
+        environment:
+            <<: *env_base
+            AGGREGATION_INTERVAL: 60min
+            AHEAD: 2
+            AGGREGATION_METHOD: FULL_SERVICE
+
+    60min-2-single:
+        <<: *base
+        environment:
+            <<: *env_base
+            AGGREGATION_INTERVAL: 60min
+            AHEAD: 2
+            AGGREGATION_METHOD: SINGLE_BUS
